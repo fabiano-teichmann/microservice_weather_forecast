@@ -2,6 +2,7 @@ import uvicorn
 from fastapi import FastAPI
 
 from microservice1.base_model import BaseModelRegisterForecast
+from microservice1.register_forecast import create_task
 
 app = FastAPI()
 
@@ -22,6 +23,7 @@ def register_weather(forecast: BaseModelRegisterForecast):
     """
         Para cadastrar um previsão do tempo é obrigatório informar o campo city, sendo os campos state e city opcionais
     """
+    create_task(forecast)
     return forecast
 
 
