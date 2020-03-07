@@ -12,11 +12,13 @@ class ApiForecastWeather:
         self.forecast = forecast
 
     def url_request(self):
+        """Mount url request join url base with query and token auth"""
         url = f"{self.url_base}?q="
         request = self.query_by_city_state_country(url)
         return f"{request}&appid={self.token}"
 
     def query_by_city_state_country(self, url: str) -> str:
+
         if self.forecast.state and self.forecast.country:
             return f"{url}{self.forecast.city}, {self.forecast.state}, {self.forecast.country}"
         else:

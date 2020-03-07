@@ -22,5 +22,7 @@ class TestRegisterForecast(TestCase):
         payload = {'city': 'Blumenau'}
         response = requests.post(url, json=payload)
         self.assertEqual(200, response.status_code)
+        payload = response.json()
+        self.assertEqual('Blumenau', payload['name'])
 
 

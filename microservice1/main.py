@@ -1,15 +1,13 @@
 import asyncio
 
-import uvicorn
-
 from fastapi import FastAPI
 
 from microservice1.base_model import BaseModelRegisterForecast, BaseForecast
 from microservice1.handler_broker import listen_broker, create_task
-from microservice1.models import save_db
 
 app = FastAPI()
 loop = asyncio.new_event_loop()
+
 
 @app.get("/")
 def info_microservice():
@@ -30,14 +28,10 @@ def register_weather(forecast: BaseModelRegisterForecast):
     """
     task = create_task(forecast)
     response = listen_broker(task)
-
-    if response:
-        save_db(response)
     response = BaseForecast(**response)
     return response
     # loop.run_in_executor(None, listen_broker, task)
     # return {'status_code': 'Previsão do tempo cadastrada com sucesso'}
 
 
-if __name__ == '__main__':
-    uvicorn.run(app, port=3001, log_level="info")
+
