@@ -2,3 +2,4 @@ requests
 celery
 fastapi
 uvicorn
+python-decouple
