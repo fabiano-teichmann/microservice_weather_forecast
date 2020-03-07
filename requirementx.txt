@@ -3,3 +3,4 @@ celery
 fastapi
 uvicorn
 python-decouple
+redis
