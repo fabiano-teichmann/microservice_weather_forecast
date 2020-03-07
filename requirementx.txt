@@ -4,3 +4,4 @@ fastapi
 uvicorn
 python-decouple
 redis
+pymongo
