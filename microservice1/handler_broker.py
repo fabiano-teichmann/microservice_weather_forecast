@@ -11,8 +11,7 @@ app = Celery('tasks', broker=BROKER_URL, backend=BACKEND_URL)
 
 
 def create_task(forecast: BaseModelRegisterForecast):
-
-    task = get_forecast_weather.delay(forecast.dict())
+    task = app.send_task('microservice2.main.get_forecast_weather', (forecast.dict(),))
     return task
 
 
