@@ -50,7 +50,7 @@ no arquivo settings.ini
 ## Rodando o celery
 Para rodar o celery execute o seguinte comando dentro da pasta do projeto:
 
-    celery -A microservice1.handler_broker worker --loglevel=info
+    celery -A microservice2.main worker --loglevel=info
     
 Sendo que para ambiente de produção é necessário utilizar o Supervisor ou o Systemctl
 do Linux para  o processo sempre estar ativo.
